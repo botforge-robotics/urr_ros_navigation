@@ -1,0 +1,12 @@
+global_costmap:
+  global_frame: map
+  rolling_window: false
+
+  inflation:
+    enabled: true
+    inflation_radius: 0.12
+
+  plugins:
+    - {name: static, type: "costmap_2d::StaticLayer"}
+    - {name: inflation, type: "costmap_2d::InflationLayer"}
+    

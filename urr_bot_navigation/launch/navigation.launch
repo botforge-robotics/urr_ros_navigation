@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<launch>
+	<arg name="gui" default="true"/>
+	<arg name="map" default="house"/>
+	<arg name="localPlanner" default="teb"/>
+	<arg name="rvizconfig" default="$(find urr_bot_navigation)/rviz/navigation.rviz"/>
+	<param name="use_gui" value="$(arg gui)"/>
+	
+	<include file="$(find urr_bot_simulation)/launch/gazebo.launch" if="$(arg gui)">
+		<arg name="world" default="$(arg map)" />
+	</include>
+	
+	<node name="rviz" pkg="rviz" args="-d $(arg rvizconfig)" type="rviz" required="true" if="$(arg gui)"/>
+	
+	<!-- map server -->
+	<include file="$(find urr_bot_navigation)/launch/map_server.launch">
+		<arg name="map_name" default="$(arg map)"/>
+	</include>
+
+	<!-- amcl -->
+	<include file="$(find urr_bot_navigation)/launch/amcl.launch">
+	</include>
+
+	<!-- move base -->
+	<include file="$(find urr_bot_navigation)/launch/move_base.launch">
+		<arg name="localPlanner" value="$(arg localPlanner)"/>
+	</include>
+  
+</launch>
