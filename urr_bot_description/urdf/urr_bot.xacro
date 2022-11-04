@@ -6,8 +6,8 @@
 <xacro:include filename="$(find urr_bot_description)/urdf/urr_bot.gazebo" />
 <link name="base_link">
   <inertial>
-    <origin xyz="0.0014622385857804554 0.0003790265360908496 0.035072892228656324" rpy="0 0 0"/>
-    <mass value="0.655722312951929"/>
+    <origin xyz="0.001469176771838543 0.0003790265380710722 0.03507288297524478" rpy="0 0 0"/>
+    <mass value="0.6558055651572491"/>
     <inertia ixx="0.000584" iyy="0.002255" izz="0.002722" ixy="-0.0" iyz="0.0" ixz="-3.3e-05"/>
   </inertial>
   <visual>
@@ -67,44 +67,44 @@
   </collision>
 </link>
 
-<link name="left_wheel_1">
+<link name="right_wheel_1">
   <inertial>
-    <origin xyz="-0.045000341011720686 0.007000026536090602 -1.5265566588595902e-16" rpy="0 0 0"/>
+    <origin xyz="-3.4101172063927265e-07 -0.004999972863944609 2.3592239273284576e-16" rpy="0 0 0"/>
     <mass value="0.03579059430602171"/>
     <inertia ixx="1.1e-05" iyy="2.2e-05" izz="1.1e-05" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
   </inertial>
   <visual>
-    <origin xyz="-0.091117 -0.050379 -0.035" rpy="0 0 0"/>
+    <origin xyz="-0.056117 0.051621 -0.035" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://urr_bot_description/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://urr_bot_description/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="black"/>
   </visual>
   <collision>
-    <origin xyz="-0.091117 -0.050379 -0.035" rpy="0 0 0"/>
+    <origin xyz="-0.056117 0.051621 -0.035" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://urr_bot_description/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://urr_bot_description/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="right_wheel_1">
+<link name="left_wheel_1">
   <inertial>
-    <origin xyz="-0.045000341011721005 -0.006999973463909029 2.2898349882893854e-16" rpy="0 0 0"/>
+    <origin xyz="-3.410117210139729e-07 0.005000027136054359 -1.457167719820518e-16" rpy="0 0 0"/>
     <mass value="0.03579059430602171"/>
-    <inertia ixx="1.1e-05" iyy="2.2e-05" izz="1.1e-05" ixy="0.0" iyz="0.0" ixz="0.0"/>
+    <inertia ixx="1.1e-05" iyy="2.2e-05" izz="1.1e-05" ixy="0.0" iyz="-0.0" ixz="0.0"/>
   </inertial>
   <visual>
-    <origin xyz="-0.091117 0.049621 -0.035" rpy="0 0 0"/>
+    <origin xyz="-0.056117 -0.052379 -0.035" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://urr_bot_description/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://urr_bot_description/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="black"/>
   </visual>
   <collision>
-    <origin xyz="-0.091117 0.049621 -0.035" rpy="0 0 0"/>
+    <origin xyz="-0.056117 -0.052379 -0.035" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://urr_bot_description/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://urr_bot_description/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -121,18 +121,18 @@
   <child link="camera_1"/>
 </joint>
 
+<joint name="right_motor" type="continuous">
+  <origin xyz="0.056117 -0.051621 0.035" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="right_wheel_1"/>
+  <axis xyz="-0.0 1.0 0.0"/>
+</joint>
+
 <joint name="left_motor" type="continuous">
-  <origin xyz="0.091117 0.050379 0.035" rpy="0 0 0"/>
+  <origin xyz="0.056117 0.052379 0.035" rpy="0 0 0"/>
   <parent link="base_link"/>
   <child link="left_wheel_1"/>
   <axis xyz="0.0 1.0 -0.0"/>
-</joint>
-
-<joint name="right_motor" type="continuous">
-  <origin xyz="0.091117 -0.049621 0.035" rpy="0 0 0"/>
-  <parent link="base_link"/>
-  <child link="right_wheel_1"/>
-  <axis xyz="-0.0 -1.0 0.0"/>
 </joint>
 
 </robot>

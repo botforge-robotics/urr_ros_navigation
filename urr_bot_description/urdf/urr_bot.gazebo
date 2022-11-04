@@ -29,13 +29,6 @@
   <selfCollide>true</selfCollide>
 </gazebo>
 
-<gazebo reference="left_wheel_1">
-  <material>${black}</material>
-  <mu1>1000</mu1>
-  <mu2>1000</mu2>
-  <selfCollide>true</selfCollide>
-</gazebo>
-
 <gazebo reference="right_wheel_1">
   <material>${black}</material>
   <mu1>1000</mu1>
@@ -43,4 +36,35 @@
   <selfCollide>true</selfCollide>
 </gazebo>
 
+<gazebo reference="left_wheel_1">
+  <material>${black}</material>
+  <mu1>1000</mu1>
+  <mu2>1000</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+
+<gazebo>
+	<plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+		<updateRate>100</updateRate>
+		<leftJoint>left_motor</leftJoint>
+		<rightJoint>right_motor</rightJoint>
+		<wheelSeparation>0.114</wheelSeparation>
+		<wheelDiameter>0.06</wheelDiameter>
+		<wheelAcceleration>1.0</wheelAcceleration>
+		<wheelTorque>0.980665</wheelTorque>
+		<commandTopic>cmd_vel</commandTopic>
+		<odometryTopic>odom</odometryTopic>
+		<odometryFrame>odom</odometryFrame>
+		<robotBaseFrame>base_link</robotBaseFrame>
+		<odometrySource>world</odometrySource>
+		<publishWheelTF>0</publishWheelTF>
+		<publishOdom>1</publishOdom>
+		<publishWheelJointState>0</publishWheelJointState>
+		<legacyMode>false</legacyMode>
+		<publishTf>1</publishTf>
+		<rosDebugLevel>na</rosDebugLevel>
+		<publishOdomTF>1</publishOdomTF>
+	</plugin>
+</gazebo>
 </robot>
