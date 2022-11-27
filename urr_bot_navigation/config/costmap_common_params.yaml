@@ -2,8 +2,8 @@ footprint: [[-0.1, 0.062], [0.1, 0.062], [0.1, -0.062], [-0.1, -0.062]]
 footprint_padding: 0.02
 
 robot_base_frame: base_link
-update_frequency: 5.0
-publish_frequency: 5.0
+update_frequency: 10.0
+publish_frequency: 10.0
 transform_tolerance: 0.75
 
 
@@ -17,7 +17,7 @@ static:
   map_topic: /map
   subscribe_to_updates: true
 
-obstacles_laser:
+obstacles_layer:
   enable: true
   observation_sources: lidar_1
   lidar_1:

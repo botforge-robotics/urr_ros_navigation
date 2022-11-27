@@ -8,6 +8,7 @@ local_costmap:
   inflation:
     enabled: true
     inflation_radius: 0.12
+    static_map: false 
 
   plugins:
     - {name: obstacles_laser, type: "costmap_2d::ObstacleLayer"}
